@@ -13,4 +13,7 @@
 		SELECT * FROM cars
 	</select>
 
+	<delete id="deleteCar" parameterType="string">
+		DELETE FROM cars WHERE carid=#{value}
+	</delete>
 </mapper>

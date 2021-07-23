@@ -31,6 +31,7 @@
         <th>租赁价格</th>
         <th>押金</th>
         <th>租借状态</th>
+        <th width="200px">车辆图片</th>
         <th>描述</th>
         <th>操作</th>
 
@@ -47,6 +48,9 @@
         <td th:if="${car.isrenting} eq 0" th:text="未出租">
         </td>
         <td th:if="${car.isrenting} eq 1" th:text="已出租">
+        </td>
+        <td>
+            <img th:src="|../images/${car.img}|" style="width:200px;height:160px" alt="车辆图片" />
         </td>
         <td th:text="${car.description}"></td>
         <td>

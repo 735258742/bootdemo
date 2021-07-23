@@ -10,5 +10,6 @@ public interface CarMapper {
     public List<Car> viewCar();
     public List<Car> manageviewCar();
     Car selectCar(String carid);
+    void deleteCar(String carid);
 
 }

@@ -26,5 +26,7 @@ public class CarServiceImpl implements ICarService {
         return carMapper.selectCar(carid);
     }
 
+    @Override
+    public void deleteCar(String carid){carMapper.deleteCar(carid);}
 
 }

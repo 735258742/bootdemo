@@ -28,4 +28,9 @@ public class CarController {
         request.setAttribute("cars",carService.manageviewCar());
         return "manageviewCar";
     }
+    @GetMapping("deleteCar")
+    public String deleteCar(String carid,HttpServletRequest request){
+    carService.deleteCar(carid);
+    return "redirect:manageviewCar";
+    }
 }

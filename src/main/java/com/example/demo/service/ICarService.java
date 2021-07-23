@@ -8,5 +8,6 @@ public interface ICarService {
     List<Car> viewCar();
     List<Car> manageviewCar();
     Car selectCar(String carid);
+    void deleteCar(String carid);
 
 }
