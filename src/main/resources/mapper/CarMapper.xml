@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CarMapper">
+    <select id="viewCar" resultType="car">
+		SELECT * FROM cars
+	</select>
+
+	<select id="selectCar" resultType="car" parameterType="string">
+		SELECT * FROM cars WHERE carid=#{value}
+	</select>
+
+</mapper>

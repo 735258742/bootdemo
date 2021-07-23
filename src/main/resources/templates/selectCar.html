@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>租车系统-车辆选择</title>
+    <style>
+        #round{
+            width:400px;                              //通过给divwidth和heigh值，在通过margin属性来定位
+        height:200px;
+            margin:0 auto;
+        }
+        table{                                         //通过给divwidth和heigh值，在通过margin属性来定位
+        width:2000px;
+            height:250px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+<h2>您选择租赁的汽车是：</h2>
+<table border="1" bgcolor="#00CACA" cellpadding="2">
+
+    <tr align="center">
+        <th>车辆ID</th>
+        <th>车牌号码</th>
+        <th>车型</th>
+        <th>车辆品牌</th>
+        <th>车辆颜色</th>
+        <th>汽车价值/万元</th>
+        <th>租赁价格</th>
+        <th>押金</th>
+        <th>车辆状况</th>
+        <th>车辆图片</th>
+        <th>描述</th>
+    </tr>
+
+    <tr align="center" th:each="car,carStat : ${cars}" >
+        <td th:text="${car.carid}"></td>
+        <td th:text="${car.number}"></td>
+        <td th:text="${car.type}"></td>
+        <td th:text="${car.brand}"></td>
+        <td th:text="${car.color}"></td>
+        <td th:text="${car.price}"></td>
+        <td th:text="${car.rentprice}"></td>
+        <td th:text="${car.deposit}"></td>
+        <td th:text="${car.vehiclequality}"></td>
+        <td>
+            <img th:src="|../images/${car.img}|" style="width:100px;height:80px" />
+        </td>
+        <td th:text="${car.description}"></td>
+    </tr>
+</table>
+<br/>
+<form name="formBox" method="post" action="">
+    请输入租车时长：<input type="text" name="day" size="2" maxlength="3" />天<br />
+    <br/>
+    <div align="center" style="position:relative;left:360px">
+        <button>提交订单</button>
+    </div>
+</form>
+</body>
+</html>
