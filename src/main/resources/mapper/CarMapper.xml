@@ -9,4 +9,8 @@
 		SELECT * FROM cars WHERE carid=#{value}
 	</select>
 
+	<select id="manageviewCar" resultType="car">
+		SELECT * FROM cars
+	</select>
+
 </mapper>

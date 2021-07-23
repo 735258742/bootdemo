@@ -10,7 +10,7 @@
             margin:0 auto;
         }
         table{                                         //通过给divwidth和heigh值，在通过margin属性来定位
-        width:2000px;
+        width:3000px;
             height:250px;
             margin:0 auto;
         }
@@ -20,18 +20,18 @@
 <h2>您选择租赁的汽车是：</h2>
 <table border="1" bgcolor="#00CACA" cellpadding="2">
 
-    <tr align="center">
-        <th>车辆ID</th>
-        <th>车牌号码</th>
-        <th>车型</th>
-        <th>车辆品牌</th>
-        <th>车辆颜色</th>
-        <th>汽车价值/万元</th>
-        <th>租赁价格</th>
-        <th>押金</th>
-        <th>车辆状况</th>
-        <th>车辆图片</th>
-        <th>描述</th>
+    <tr align="center" >
+        <th width="100px">车辆ID</th>
+        <th width="100px">车牌号码</th>
+        <th width="100px">车型</th>
+        <th width="100px">车辆品牌</th>
+        <th width="100px">车辆颜色</th>
+        <th width="100px">汽车价值/万元</th>
+        <th width="100px">租赁价格</th>
+        <th width="100px">押金</th>
+        <th width="100px">车辆状况</th>
+        <th width="200px">车辆图片</th>
+        <th width="100px">描述</th>
     </tr>
 
     <tr align="center" th:each="car,carStat : ${cars}" >
@@ -45,7 +45,7 @@
         <td th:text="${car.deposit}"></td>
         <td th:text="${car.vehiclequality}"></td>
         <td>
-            <img th:src="|../images/${car.img}|" style="width:100px;height:80px" />
+            <img th:src="|../images/${car.img}|" style="width:200px;height:160px" />
         </td>
         <td th:text="${car.description}"></td>
     </tr>
@@ -54,7 +54,7 @@
 <form name="formBox" method="post" action="">
     请输入租车时长：<input type="text" name="day" size="2" maxlength="3" />天<br />
     <br/>
-    <div align="center" style="position:relative;left:360px">
+    <div align="center" style="position:relative;left:460px">
         <button>提交订单</button>
     </div>
 </form>

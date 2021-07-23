@@ -23,4 +23,9 @@ public class CarController {
     request.setAttribute("cars",carService.selectCar(carid));
         return "selectCar";
     }
+    @GetMapping("manageviewCar")
+    public String manageCar(HttpServletRequest request){
+        request.setAttribute("cars",carService.manageviewCar());
+        return "manageviewCar";
+    }
 }

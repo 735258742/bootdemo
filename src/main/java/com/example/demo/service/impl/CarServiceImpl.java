@@ -19,7 +19,12 @@ public class CarServiceImpl implements ICarService {
     }
 
     @Override
+    public List<Car> manageviewCar(){return carMapper.manageviewCar();}
+
+    @Override
     public Car selectCar(String carid) {
         return carMapper.selectCar(carid);
     }
+
+
 }

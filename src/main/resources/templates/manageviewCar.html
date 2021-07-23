@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>租车系统-车辆管理</title>
+    <style>
+        #round{
+            width:400px;                              //通过给divwidth和heigh值，在通过margin属性来定位
+        height:200px;
+            margin:0 auto;
+        }
+        table{                                         //通过给divwidth和heigh值，在通过margin属性来定位
+        width:1600px;
+            height:600px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+<table border="1" bgcolor="#00CACA" cellpadding="2">
+    <caption>
+        车辆管理界面
+    </caption>
+    <tr align="center">
+        <th>车辆ID</th>
+        <th>车牌号码</th>
+        <th>车型</th>
+        <th>车辆品牌</th>
+        <th>车辆颜色</th>
+        <th>汽车价值/万元</th>
+        <th>租赁价格</th>
+        <th>押金</th>
+        <th>租借状态</th>
+        <th>描述</th>
+        <th>操作</th>
+
+    </tr>
+    <tr align="center" width="1000" th:each="car,carStat : ${cars}" >
+        <td th:text="${car.carid}"></td>
+        <td th:text="${car.number}"></td>
+        <td th:text="${car.type}"></td>
+        <td th:text="${car.brand}"></td>
+        <td th:text="${car.color}"></td>
+        <td th:text="${car.price}"></td>
+        <td th:text="${car.rentprice}"></td>
+        <td th:text="${car.deposit}"></td>
+        <td th:if="${car.isrenting} eq 0" th:text="未出租">
+        </td>
+        <td th:if="${car.isrenting} eq 1" th:text="已出租">
+        </td>
+        <td th:text="${car.description}"></td>
+        <td>
+            <!--            <a th:href="@{selectCar(carid=${car.carid})}">租车</a>-->
+            <div th:switch="${car.isrenting}">
+                <a th:href="@{addCar(carid=${car.carid})}"
+                   th:case="0">增加车辆</a>
+<!--                <a th:href="@{modifyCar(carid=${car.carid})}"-->
+<!--                   th:case="0">修改车辆</a>-->
+<!--                <a th:href="@{deleteCar(carid=${car.carid})}"-->
+<!--                   th:case="0">删除车辆</a>-->
+                <p th:case="1">已租借</p>
+            </div>
+            <div th:switch="${car.isrenting}">
+
+                                <a th:href="@{modifyCar(carid=${car.carid})}"
+                                   th:case="0">修改车辆</a>
+                <p th:case="1">已租借</p>
+            </div>
+            <div th:switch="${car.isrenting}">
+
+                <a th:href="@{deleteCar(carid=${car.carid})}"
+                   th:case="0">删除车辆</a>
+                <p th:case="1">已租借</p>
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
