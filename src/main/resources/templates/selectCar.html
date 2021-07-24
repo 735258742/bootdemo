@@ -51,11 +51,11 @@
     </tr>
 </table>
 <br/>
-<form name="formBox" method="post" action="">
-    请输入租车时长：<input type="text" name="day" size="2" maxlength="3" />天<br />
+<form th:action="@{home}" method="GET" >
+    请输入租车时长：<input type="text" name="day" id="day" size="2" maxlength="3" />天<br />
     <br/>
     <div align="center" style="position:relative;left:460px">
-        <button>提交订单</button>
+        <input type="submit" value="提交订单">
     </div>
 </form>
 </body>

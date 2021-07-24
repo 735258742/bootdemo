@@ -4,6 +4,7 @@ import com.example.demo.service.ICarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,5 +33,10 @@ public class CarController {
     public String deleteCar(String carid,HttpServletRequest request){
     carService.deleteCar(carid);
     return "redirect:manageviewCar";
+    }
+
+    @GetMapping("home")
+    public String home(){
+        return "home";
     }
 }

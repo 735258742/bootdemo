@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>租车系统-登录界面</title>
+</head>
+<body>
+<h1 align="center" >欢迎来到蓝桥第九组租车系统</h1>
+    <form th:action="@{login}" method="POST" align="center">
+        <label for="username">用户名</label><input type="text" name="username" id="username">
+        <label for="password">密码</label><input type="password" name="password" id="password">
+        <input type="submit" value="登录">
+    </form>
+</body>
+</html>
