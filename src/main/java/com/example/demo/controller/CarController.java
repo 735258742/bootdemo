@@ -22,6 +22,7 @@ public class CarController {
     @GetMapping("selectCar")
     public String selectCar(String carid,HttpServletRequest request){
     request.setAttribute("cars",carService.selectCar(carid));
+        System.out.println(carid);
         return "selectCar";
     }
     @GetMapping("manageviewCar")
@@ -35,8 +36,5 @@ public class CarController {
     return "redirect:manageviewCar";
     }
 
-    @GetMapping("home")
-    public String home(){
-        return "home";
-    }
+
 }

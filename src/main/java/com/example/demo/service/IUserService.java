@@ -1,4 +1,4 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
 import com.example.demo.bean.User;
 import org.apache.ibatis.annotations.Param;
