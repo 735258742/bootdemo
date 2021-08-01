@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>租车系统-登录</title>
+    <title>租车系统-注册</title>
     <link rel="stylesheet" href="/css/reset.css">
     <style>
 
@@ -17,31 +17,30 @@
             height: 65px;background-color: rgb(0, 119, 255);width: 1210px;margin: 0 auto;line-height: 65px;
         }
 
-        .login{
+        .register{
             height: 320px;width: 800px;float: left;margin: 100px 212px;background-color:white;padding-top: 100px;
         }
-        .login h1{font-size: 40px;}
-        .fm label:first-child{font-size: 25px;margin-left: -72px; }
-        #sdlb{font-size: 25px;}
-        a{font-size: 5px;text-decoration: underline;}
+        .register h1{ font-size: 50px;margin-left: 290px;}
+        .input1{margin-left: 50px;}
+        .input2{margin-left: 66px;}
+        .input3{margin-left: 34px;}
+        .input4{margin-left: 220px;}
+        .in{margin-left: 230px;}
     </style>
 </head>
 <body>
 <div class="top"><h1 align="center">蓝桥第九组租车系统</h1></div>
 <div class="body1">
-
-    <div class="login">
-        <h1 align="center" >欢迎来到蓝桥第九组租车系统</h1><br><br><br><br>
-        <form th:action="@{login}" method="POST" align="center" class="fm">
-            <label for="username">用户名</label><input type="text" name="username" id="username" autofocus="autofocus" >
-            <br><br>
-            <label for="password" id="sdlb">密码</label><input type="password" name="password" id="password" autofocus="autofocus" >
-            <input type="submit" value="登录">
+    <div class="register">
+        <h1>欢迎注册</h1><br><br>
+        <form th:action="@{uregister}" method="post" >
+            <div class="in">
+                用户名:<input type="text" name="username" value="" class="input1" /></br>
+                密码:<input type="password" name="password" value="" class="input2" /></br>
+                确认密码:<input type="password" name="password2" value="" class="input3" /></br>
+                <input type="submit" value="注册" class="input4">
+            </div>
         </form>
-        <br>
-        <a th:href="@{register}">
-            <p align="center">还没有账户？点击这里</p>
-        </a>
     </div>
 
 </div>

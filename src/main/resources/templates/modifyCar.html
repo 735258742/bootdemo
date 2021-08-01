@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>管理系统-车辆修改</title>
+    <style>
+        #round{
+            width:400px;                              //通过给divwidth和heigh值，在通过margin属性来定位
+        height:200px;
+            margin:0 auto;
+        }
+        table{                                         //通过给divwidth和heigh值，在通过margin属性来定位
+        width:3000px;
+            height:250px;
+            margin:0 auto;
+        }
+    </style>
+    <style type="text/css">
+        input.text{text-align:center;}
+    </style>
+    <script type="text/javascript">
+        function imgPreview(fileDom){
+            //判断是否支持FileReader
+            if (window.FileReader) {
+                var reader = new FileReader();
+            } else {
+                alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+            }
+
+            //获取文件
+            var file = fileDom.files[0];
+            var imageType = /^image\//;
+            //是否是图片
+            if (!imageType.test(file.type)) {
+                alert("请选择图片！");
+                return;
+            }
+            //读取完成
+            reader.onload = function(e) {
+                //获取图片dom
+                var img = document.getElementById("preview");
+                //图片路径设置为读取的图片
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</head>
+<body>
+<form th:action="@{updateCar}" method="GET" >
+    <table border="1" bgcolor="#00CACA" cellpadding="2">
+
+        <tr align="center" >
+            <th width="100px">车辆ID</th>
+            <th width="100px">车牌号码</th>
+            <th width="100px">车型</th>
+            <th width="100px">车辆品牌</th>
+            <th width="100px">车辆颜色</th>
+            <th width="100px">汽车价值/万元</th>
+            <th width="100px">租赁价格</th>
+            <th width="100px">押金</th>
+            <th width="100px">车辆状况</th>
+            <th width="100px">租赁情况</th>
+            <th width="200px">车辆图片</th>
+            <th width="100px">描述</th>
+        </tr>
+
+        <tr align="center" th:each="car,carStat : ${cars}" >
+            <td th:text="${car.carid}"></td>
+            <td th:text="${car.number}"></td>
+            <td th:text="${car.type}"></td>
+            <td th:text="${car.brand}"></td>
+            <td th:text="${car.color}"></td>
+            <td th:text="${car.price}"></td>
+            <td th:text="${car.rentprice}"></td>
+            <td th:text="${car.deposit}"></td>
+            <td th:text="${car.vehiclequality}"></td>
+            <td th:text="${car.isrenting}"></td>
+            <td>
+                <img th:src="|../images/${car.img}|" style="width:200px;height:160px" alt="车辆图片"/>
+            </td>
+            <td th:text="${car.description}"></td>
+        </tr>
+        <tr align="center" th:each="car,carStat : ${cars}" >
+            <td ><input class="text" type="text" name="carid" th:value="${car.carid}"/></td>
+            <td ><input class="text" type="text" name="number" th:value="${car.number}"/></td>
+            <td ><input class="text" type="text" name="type" th:value="${car.type}" /></td>
+            <td ><input class="text" type="text" name="brand" th:value="${car.brand}" /></td>
+            <td ><input class="text" type="text" name="color" th:value="${car.color}"/></td>
+            <td ><input class="text" type="text" name="price" th:value="${car.price}"/></td>
+            <td ><input class="text" type="text" name="rentprice" th:value="${car.rentprice}"/></td>
+            <td ><input class="text" type="text" name="deposit" th:value="${car.deposit}"/></td>
+            <td ><input class="text" type="text" name="vehiclequality" th:value="${car.vehiclequality}"/></td>
+            <td ><input class="text" type="text" name="isrenting" th:placeholder="（0未出租1已出租）"/></td>
+            <td>
+                <img id="preview" />
+                <input type="file" name="img" onchange="imgPreview(this)"/><br/>
+            </td>
+            <td ><input class="text" name="description" type="text" th:value="${car.description}"/></td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+    <div align="center" style="position:relative;left:460px">
+        <input type="submit" value="修改" >
+    </div>
+</form>
+</body>
+</html>

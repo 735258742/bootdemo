@@ -16,4 +16,18 @@
 	<delete id="deleteCar" parameterType="string">
 		DELETE FROM cars WHERE carid=#{value}
 	</delete>
+
+	<select id="modifyCar" resultType="car" parameterType="string">
+		SELECT * FROM cars WHERE carid=#{value}
+	</select>
+
+	<update id="updateCar">
+        UPDATE cars
+        SET carid=#{car.carid},number=#{car.number},type=#{car.type},brand=#{car.brand},color=#{car.color},price=#{car.price},rentprice=#{car.rentprice},deposit=#{car.deposit},vehiclequality=#{car.vehiclequality},isrenting=#{car.isrenting},img=#{car.img},description=#{car.description}
+        WHERE carid=#{car.carid}
+    </update>
+
+	<insert id="addCar" parameterType="car">
+        INSERT INTO cars VALUES(#{car.carid},#{car.number},#{car.type},#{car.brand},#{car.color},#{car.price},#{car.rentprice},#{car.deposit},#{car.vehiclequality},#{car.isrenting},#{car.img},#{car.description})
+    </insert>
 </mapper>

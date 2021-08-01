@@ -29,4 +29,17 @@ public class CarServiceImpl implements ICarService {
     @Override
     public void deleteCar(String carid){carMapper.deleteCar(carid);}
 
+    @Override
+    public void addCar(Car car) {
+        carMapper.addCar(car);
+    }
+
+    @Override
+    public java.lang.Object modifyCar(String carid) { return carMapper.modifyCar(carid); }
+
+    @Override
+    public boolean updateCar(Car car){
+        return carMapper.updateCar(car);
+    }
+
 }

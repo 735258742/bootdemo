@@ -15,6 +15,20 @@ public class Car {
     private String description;
     private String img;
 
+    public Car(String carid, String number, String type, String brand, String color, String price, String rentprice, String deposit, String isrenting, String vehiclequality, String description, String img) {
+        this.carid = carid;
+        this.number = number;
+        this.type = type;
+        this.brand = brand;
+        this.color = color;
+        this.price = price;
+        this.rentprice = rentprice;
+        this.deposit = deposit;
+        this.isrenting = isrenting;
+        this.vehiclequality = vehiclequality;
+        this.description = description;
+        this.img = img;
+    }
     public String getImg() {
         return img;
     }
