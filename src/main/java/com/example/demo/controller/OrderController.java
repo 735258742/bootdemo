@@ -21,6 +21,8 @@ public class OrderController {
 
     @GetMapping("viewOrder")
     public String viewOrder(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.getAttribute("getusername");
         request.setAttribute("orders",orderService.viewOrder());
         return "viewOrder";
     }
@@ -28,6 +30,7 @@ public class OrderController {
     @GetMapping("selectOrder")
     public String selectOrder(String userid,HttpServletRequest request){
         HttpSession session=request.getSession();
+        session.getAttribute("getusername");
         userid= (String) session.getAttribute("getuserid");
         System.out.println("userid1:"+userid);
         request.setAttribute("orders",orderService.selectOrder(userid));

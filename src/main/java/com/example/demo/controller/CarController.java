@@ -23,12 +23,15 @@ public class CarController {
     private ICarService carService;
     @GetMapping("viewCar")
     public String viewCar(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.getAttribute("getusername");
         request.setAttribute("cars",carService.viewCar());
         return "viewCar";
     }
     @GetMapping("selectCar")
     public String selectCar(String carid,HttpServletRequest request){
         HttpSession session = request.getSession();
+        session.getAttribute("getusername");
         session.setAttribute("carid", carid);
         System.out.println("select里面的carid:" + carid);
         request.setAttribute("carid", carid);
@@ -42,14 +45,15 @@ public class CarController {
     public String Pay(String carid, String begintime, String endtime, HttpServletRequest request) throws ParseException {
         HttpSession session = request.getSession();
         carid = (String) session.getAttribute("carid");//从session得到carid
+        session.getAttribute("getusername");
 
         request.setAttribute("cars", carService.selectCar(carid));
         String userid = (String) session.getAttribute("getuserid");
         System.out.println("userid：" + userid);
-        String realname = (String) session.getAttribute("realname");
+        String username = (String) session.getAttribute("username");
         session.setAttribute("userid", userid);
         request.setAttribute("userid", userid);
-        request.setAttribute("realname", realname);
+        request.setAttribute("realname", username);
         request.setAttribute("begintime", begintime);
         request.setAttribute("endtime", endtime);
         System.out.println("endtime:" + endtime);
@@ -121,11 +125,15 @@ public class CarController {
 
     @GetMapping("manageviewCar")
     public String manageCar(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.getAttribute("getusername");
         request.setAttribute("cars",carService.manageviewCar());
         return "manageviewCar";
     }
     @GetMapping("deleteCar")
-    public String deleteCar(String carid){
+    public String deleteCar(String carid,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.getAttribute("getusername");
     carService.deleteCar(carid);
     return "redirect:manageviewCar";
     }
@@ -133,6 +141,8 @@ public class CarController {
 
     @GetMapping("modifyCar")
     public String modifyCar(String carid,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.getAttribute("getusername");
         request.setAttribute("cars",carService.modifyCar(carid));
         return "modifyCar";
     }

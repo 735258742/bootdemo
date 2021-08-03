@@ -8,8 +8,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.net.ssl.SSLEngine;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.nio.file.Files;
 
 @Controller
 @RequestMapping
@@ -20,6 +22,8 @@ public class UserController {
 
     @GetMapping("viewUser")
     public String viewUser(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.getAttribute("getusername");
         request.setAttribute("users",userService.viewUser());
         return "viewUser";
     }
@@ -89,6 +93,9 @@ public class UserController {
             System.out.println("获取的id："+user.getUserid());
             session.setAttribute("getusername",user.getUsername());
             if (user.getIsroot().equals("0")) {
+                String denglu= (String) session.getAttribute("getusername");
+                System.out.println("登录进来拿到的username:"+denglu);
+
                 return "redirect:home";
             } else {
                 return "redirect:managehome";
@@ -100,12 +107,17 @@ public class UserController {
 
     }
     @GetMapping("home")
-    public String home(){
+    public String home(HttpServletRequest request)
+    {
+        HttpSession session = request.getSession();
+         session.getAttribute("getusername");
         return "home";
     }
 
     @GetMapping("managehome")
-    public String managehome(){
+    public String managehome(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.getAttribute("getusername");
         return "managehome";
     }
 }

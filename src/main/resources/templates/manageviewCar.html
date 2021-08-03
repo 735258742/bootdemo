@@ -42,12 +42,21 @@
         .tb tr th{border: solid #777;height: 60px;line-height: 60px}
         .tb tr td{border: solid #777;line-height: 26px;height:26px}
 
-        table a{text-decoration: underline;}
+        table a{text-decoration: underline}
+
+        .logout{height: 40px;width: 150px;background-color:white;float: left;margin-left: 10px;}
+
 
     </style>
 </head>
 <body>
 <div class="top"><h1 align="center">蓝桥第九组租车系统-管理员界面</h1></div>
+
+<div class="logout">
+    <p>管理员：<span th:text="${session.getusername}"></span>，你好！</p><br>
+    <a href="../login">退出登录</p></a>
+</div>
+
 <div class="body1">
     <ul class="nav">
         <li>

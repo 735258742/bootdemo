@@ -44,10 +44,19 @@
 
         table a{text-decoration: underline;}
 
+
+        .logout{height: 40px;width: 145px;background-color:white;float: left;margin-left: 10px;}
+
     </style>
 </head>
 <body>
-<div class="top"><h1 align="center">蓝桥第九组租车系统-管理员界面</h1></div>
+<div class="top"><h1 align="center">蓝桥第九组租车系统-订单查看界面</h1></div>
+
+<div class="logout">
+    <p>用户：<span th:text="${session.getusername}"></span>，你好！</p><br>
+    <a href="login">退出登录</p></a>
+</div>
+
 <div class="body1">
     <ul class="nav">
         <li>

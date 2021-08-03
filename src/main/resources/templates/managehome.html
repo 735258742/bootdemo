@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -56,10 +56,18 @@
         .news h1{font-size: 20px;padding-left: 25px;padding-top: 20px;}
         .news ul{padding-left: 120px;list-style:disc;}
         .news li{list-style:disc;padding-top: 35px;}
+        .logout{height: 40px;width: 150px;background-color:white;float: left;margin-left: 10px;}
+
     </style>
 </head>
 <body>
 <div class="top"><h1 align="center">蓝桥第九组租车系统-管理员界面</h1></div>
+
+<div class="logout">
+    <p>管理员：<span th:text="${session.getusername}"></span>，你好！</p><br>
+    <a href="login">退出登录</p></a>
+</div>
+
 <div class="body1">
     <ul class="nav">
         <li>
