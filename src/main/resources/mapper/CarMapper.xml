@@ -30,4 +30,18 @@
 	<insert id="addCar" parameterType="car">
         INSERT INTO cars VALUES(#{car.carid},#{car.number},#{car.type},#{car.brand},#{car.color},#{car.price},#{car.rentprice},#{car.deposit},#{car.vehiclequality},#{car.isrenting},#{car.img},#{car.description})
     </insert>
+
+	<select id="selectrentpricebyid" resultType="string" parameterType="string">
+		SELECT rentprice FROM cars WHERE carid=#{value}
+	</select>
+
+	<select id="selectdepositbyid" resultType="string" parameterType="string">
+		SELECT deposit FROM cars WHERE carid=#{value}
+	</select>
+
+	<insert id="addorder" parameterType="com.example.demo.bean.Ordertable" >
+		insert into ordertable(username,userid,carid,number,type,brand,color,rentprice,deposit,total,begintime,endtime,img)
+		values (#{username},#{userid},#{carid},#{number},#{type},#{brand},#{color},#{rentprice},#{deposit},#{total},#{begintime},#{endtime},#{img})
+	</insert>
+
 </mapper>

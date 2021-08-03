@@ -6,6 +6,13 @@ public class User {
     private String password;
     private String isroot;
 
+    public User(String userid, String username, String password, String isroot) {
+        this.userid = userid;
+        this.username = username;
+        this.password = password;
+        this.isroot = isroot;
+    }
+
     public String getUserid() {
         return userid;
     }

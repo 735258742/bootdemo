@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.OrderMapper">
+
+    <select id="viewOrder" resultType="ordertable">
+        SELECT * FROM  ordertable
+    </select>
+
+    <select id="selectOrder"  resultType="ordertable" parameterType="string">
+		SELECT * FROM ordertable WHERE userid= #{userid}
+	</select>
+
+</mapper>
+

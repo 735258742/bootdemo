@@ -15,4 +15,6 @@ public interface IUserService {
 
     void setRoot(String userid);
 
+    String findUserNameByUserName(String username);
+
 }

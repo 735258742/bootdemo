@@ -1,48 +1,68 @@
 package com.example.demo.bean;
 
-public class Car {
+import java.sql.Timestamp;
+import java.util.Date;
 
+public class Ordertable {
+    private String rentid;
+    private String username;
+    private String userid;
     private String carid;
     private String number;
     private String type;
     private String brand;
     private String color;
-    private double price;
     private double rentprice;
     private double deposit;
-    private String isrenting;
-    private String vehiclequality;
+    private double total;
+    private Date begintime;
+    private Date endtime;
     private String description;
     private String img;
 
-    public Car(String carid, String number, String type, String brand, String color, double price, double rentprice, double deposit, String isrenting, String vehiclequality, String description, String img) {
+    public Ordertable(String rentid, String username, String userid, String carid, String number, String type, String brand, String color, double rentprice, double deposit, double total, Date begintime, Date endtime, String description, String img) {
+        this.rentid = rentid;
+        this.username = username;
+        this.userid = userid;
         this.carid = carid;
         this.number = number;
         this.type = type;
         this.brand = brand;
         this.color = color;
-        this.price = price;
         this.rentprice = rentprice;
         this.deposit = deposit;
-        this.isrenting = isrenting;
-        this.vehiclequality = vehiclequality;
+        this.total = total;
+        this.begintime = begintime;
+        this.endtime = endtime;
         this.description = description;
         this.img = img;
     }
-    public String getImg() {
-        return img;
+
+    public Ordertable() {
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public String getRentid() {
+        return rentid;
     }
 
-    public String getVehiclequality() {
-        return vehiclequality;
+    public void setRentid(String rentid) {
+        this.rentid = rentid;
     }
 
-    public void setVehiclequality(String vehiclequality) {
-        this.vehiclequality = vehiclequality;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getCarid() {
@@ -85,14 +105,6 @@ public class Car {
         this.color = color;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public double getRentprice() {
         return rentprice;
     }
@@ -109,12 +121,28 @@ public class Car {
         this.deposit = deposit;
     }
 
-    public String getIsrenting() {
-        return isrenting;
+    public double getTotal() {
+        return total;
     }
 
-    public void setIsrenting(String isrenting) {
-        this.isrenting = isrenting;
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Date getBegintime() {
+        return begintime;
+    }
+
+    public void setBegintime(Date begintime) {
+        this.begintime = begintime;
+    }
+
+    public Date getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(Date endtime) {
+        this.endtime = endtime;
     }
 
     public String getDescription() {
@@ -124,4 +152,13 @@ public class Car {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 }
+

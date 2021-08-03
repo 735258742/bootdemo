@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>租车系统-支付页面</title>
+</head>
+<body>
+<h1>支付中</h1>
+<!--<input type="hidden" name="userid" value="${userid}">-->
+<!--<input type="hidden" name="userid" value="${begintime}">-->
+<table border="1">
+    <br>
+    <tr>
+        <th>用户ID</th>
+        <th>用户姓名</th>
+        <th>始租时间</th>
+        <th>还车时间</th>
+        <th>租金合计</th>
+        <th>需付金额</th>
+    </tr>
+    <tr>
+        <td th:text="${userid}">
+        <td th:text="${realname}">
+        <td th:text="${begintime}">
+        <td th:text="${endtime}">
+        <td th:text="${money}">
+        <td th:text="${total}">
+    </tr>
+    <tr>
+        <th>车辆ID</th>
+        <th>车牌号码</th>
+        <th>车型</th>
+        <th>车辆品牌</th>
+        <th>车辆颜色</th>
+        <th>汽车价值/(万元)</th>
+        <th>租赁价格(元/天)</th>
+        <th>押金</th>
+        <th>车辆图片</th>
+        <th>描述</th>
+
+    </tr>
+    <tr align="center" th:each="car,carStat : ${cars}" >
+
+        <td th:id="carid" th:text="${car.carid}"></td>
+
+        <td th:text="${car.number}"></td>
+        <td th:text="${car.type}"></td>
+        <td th:text="${car.brand}"></td>
+        <td th:text="${car.color}"></td>
+        <td th:text="${car.price}"></td>
+        <td th:text="${car.rentprice}"></td>
+        <!--        <td th:text="${car.deposit}"></td>-->
+        <td th:text="${car.deposit}"></td>
+        <td>
+            <img  th:src="|../images/${car.img}|" style="width:100px;height:80px" />
+        </td>
+        <td th:text="${car.description}"></td>
+    </tr>
+</table>
+<form th:action="@{addorder}" method="get">
+    <button id="btd">支付费用</button>
+</form>
+<script>
+    document.getElementById("btd").onclick=function(){
+        alert("成功!请尽快到门店取车！");
+    }
+</script>
+</body>
+</html>

@@ -4,10 +4,12 @@ import com.example.demo.bean.User;
 import com.example.demo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping
@@ -38,28 +40,54 @@ public class UserController {
     public String register() {
         return "register";
     }
+
     @RequestMapping("uregister")
     public String register(HttpServletRequest request, User user) throws Exception {
-        if (user.getUsername()==null||user.getPassword()==null)
-            throw new Exception("注册信息不能为空");
-//        System.out.println("kkkkkkk");
-        user.setUsername(user.getUsername());
-        user.setPassword(user.getPassword());
-        user.setUserid(user.getUserid());
-        // 对两次输入的密码进行校验
-        String password = request.getParameter("password");
-        String password2 = request.getParameter("password2");
-        if (!password.equals(password2))
-            throw new Exception("两次输入的密码不一致");
-        userService.insertUser(user);
-        return "redirect:login";
+        if (user.getUsername()==null||user.getPassword()==null){
+            return "redirect:register";
+        }
+        else {
+            user.setUsername(user.getUsername());
+            user.setPassword(user.getPassword());
+            user.setUserid(user.getUserid());
+            //重名
+            String username = request.getParameter("username");
+            String usernameDB = userService.findUserNameByUserName(username);
+            if (usernameDB != null){ return "error"; }
+            // 对两次输入的密码进行校验
+            String password = request.getParameter("password");
+            String password2 = request.getParameter("password2");
+            if (!password.equals(password2)) {
+                return "redirect:register";
+            }
+            else {
+                userService.insertUser(user);
+                return "redirect:login";
+            }
+        }
     }
 
 
     @RequestMapping("login")
-    public String login(String username, String password) {
+    public String login(String username, String password,HttpServletRequest request) {
         User user = userService.login(username, password);
+//        System.out.println("username:"+username);
+        HttpSession session=request.getSession();
+
+
+//        String getusername=user.getUsername();
+//        System.out.println("getuserid:"+getuserid);
+//        System.out.println("getusrname:"+getusername);
+        session.setAttribute("user",user);
+        session.setAttribute("username",username);
+
         if (user != null) {
+//            String getuserid=user.getUserid();
+////            String getusername=user.getUsername();
+//            System.out.println(getuserid);
+            session.setAttribute("getuserid",user.getUserid());
+            System.out.println("获取的id："+user.getUserid());
+            session.setAttribute("getusername",user.getUsername());
             if (user.getIsroot().equals("0")) {
                 return "redirect:home";
             } else {

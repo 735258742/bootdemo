@@ -14,6 +14,7 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Override
     public List<User> viewUser(){return userMapper.viewUser();}
 
     @Override
@@ -31,4 +32,9 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void setRoot(String userid){userMapper.setRoot(userid);}
+
+    @Override
+    public String findUserNameByUserName(String username) {
+        return userMapper.findUserNameByUserName(username);
+    }
 }

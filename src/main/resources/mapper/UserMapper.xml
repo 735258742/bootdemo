@@ -26,5 +26,8 @@
         WHERE userid= #{value}
     </update>
 
+    <select id="findUserNameByUserName" resultType="String">
+        select username from users where username =#{username}
+    </select>
 </mapper>
 

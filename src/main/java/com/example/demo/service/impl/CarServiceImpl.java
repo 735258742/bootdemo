@@ -6,6 +6,8 @@ import com.example.demo.service.ICarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -40,6 +42,20 @@ public class CarServiceImpl implements ICarService {
     @Override
     public boolean updateCar(Car car){
         return carMapper.updateCar(car);
+    }
+
+    @Override
+    public String selectrentpricebyid(String carid) {
+        return carMapper.selectrentpricebyid(carid);
+    }
+
+    @Override
+    public String selectdepositbyid(String carid) {
+        return carMapper.selectdepositbyid(carid);
+    }
+
+    public int addorder(String username, String userid, String carid, String number, String type, String brand, String color, double rentprice, double deposit, double total, Date begintime, Date endtime,String img) {
+        return carMapper.addorder(username,userid,carid,number,type,brand,color,rentprice,deposit,total,begintime,endtime,img);
     }
 
 }

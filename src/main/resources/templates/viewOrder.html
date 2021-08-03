@@ -11,7 +11,7 @@
             height: 65px;background:rgb(0, 119, 255); line-height: 65px;width: 1210px;margin: 0 auto;font-size: 30px;
         }
         .body1{
-            height: 650px;width: 1210px;margin: 0 auto;background-color:rgb(110, 59, 59);
+            height: 650px;width: 1210px;margin: 0 auto;background-color:rgb(236,227,229);
         }
         .bottom1{
             height: 65px;background-color: rgb(0, 119, 255);width: 1210px;margin: 0 auto;line-height: 65px;
@@ -51,16 +51,16 @@
 <div class="body1">
     <ul class="nav">
         <li>
-            <a href="../managehome">首页</a>
+            <a href="managehome">首页</a>
+        </li>
+        <li>
+            <a href="/car/manageviewCar">车辆管理</a>
         </li>
         <li id="second">
-            <a href="manageviewCar">车辆管理</a>
+            <a href="viewOrder">查看营业额</a>
         </li>
         <li>
-            <a href="../viewOrder">查看营业额</a>
-        </li>
-        <li>
-            <a href="../viewUser">管理用户</a>
+            <a href="viewUser">管理用户</a>
         </li>
     </ul>
 
@@ -69,55 +69,38 @@
             车辆浏览界面
         </caption> -->
         <tr align="center">
+            <th>订单ID</th>
+            <th>用户名</th>
             <th>车辆ID</th>
             <th>车牌号码</th>
             <th>车型</th>
             <th>车辆品牌</th>
             <th>车辆颜色</th>
-            <th>汽车价值/万元</th>
-            <th>租赁价格</th>
+            <th>租赁价格/天</th>
             <th>押金</th>
-            <th>租借状态</th>
-            <th>描述</th>
+            <th>始租时间</th>
+            <th>还车时间</th>
             <th>车辆图片</th>
-            <th>操作</th>
+<!--            <th>描述</th>-->
+            <th>订单金额</th>
         </tr>
-        <tr align="center" width="1000" th:each="car,carStat : ${cars}" >
-            <td th:text="${car.carid}"></td>
-            <td th:text="${car.number}"></td>
-            <td th:text="${car.type}"></td>
-            <td th:text="${car.brand}"></td>
-            <td th:text="${car.color}"></td>
-            <td th:text="${car.price}"></td>
-            <td th:text="${car.rentprice}"></td>
-            <td th:text="${car.deposit}"></td>
-            <td th:if="${car.isrenting} eq 0" th:text="未出租">
-            </td>
-            <td th:if="${car.isrenting} eq 1" th:text="已出租">
-            </td>
+        <tr align="center" width="1000" th:each="ordertable,ordertableStat : ${orders}" >
+            <td th:text="${ordertable.rentid}"></td>
+            <td th:text="${ordertable.username}"></td>
+            <td th:text="${ordertable.carid}"></td>
+            <td th:text="${ordertable.number}"></td>
+            <td th:text="${ordertable.type}"></td>
+            <td th:text="${ordertable.brand}"></td>
+            <td th:text="${ordertable.color}"></td>
+            <td th:text="${ordertable.rentprice}"></td>
+            <td th:text="${ordertable.deposit}"></td>
+            <td th:text="${#dates.format(ordertable.begintime,'yyyy-MM-dd HH:mm:ss')}"></td>
+            <td th:text="${#dates.format(ordertable.endtime,'yyyy-MM-dd HH:mm:ss')}"></td>
             <td>
-                <img th:src="|../images/${car.img}|" style="width:200px;height:160px" alt="暂无图片" />
+                <img th:src="|../images/${ordertable.img}|" style="width:200px;height:160px" alt="暂无图片" />
             </td>
-            <td th:text="${car.description}"></td>
-            <td>
-                <div th:switch="${car.isrenting}">
-                    <a th:href="@{addCarPage}"
-                       th:case="0">增加车辆</a>
-                    <p th:case="1">已租借</p>
-                </div>
-                <div th:switch="${car.isrenting}">
-
-                    <a th:href="@{modifyCar(carid=${car.carid})}"
-                       th:case="0">修改车辆</a>
-                    <p th:case="1">已租借</p>
-                </div>
-                <div th:switch="${car.isrenting}">
-
-                    <a th:href="@{deleteCar(carid=${car.carid})}"
-                       th:case="0">删除车辆</a>
-                    <p th:case="1">已租借</p>
-                </div>
-            </td>
+<!--            <td th:text="${ordertable.description}"></td>-->
+            <td th:text="${ordertable.total}"></td>
         </tr>
     </table>
 

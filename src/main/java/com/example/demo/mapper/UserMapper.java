@@ -14,4 +14,5 @@ public interface UserMapper {
     void setRoot(String userid);
 
     int insertUserInfo(User user);
+    String findUserNameByUserName(String username);
 }
