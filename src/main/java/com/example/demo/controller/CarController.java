@@ -115,6 +115,7 @@ public class CarController {
         System.out.println(o1.getEndtime());
         System.out.println("o1的username:"+o1.getUsername());
         carService.addorder(username,userid,carid,number,type,brand,color,rentprice,deposit,total1,begintime,endtime,img);
+        carService.changerent(carid);
         return "redirect:../selectOrder";
     }
 

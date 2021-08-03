@@ -23,4 +23,5 @@ public interface CarMapper {
 
     int addorder(String username, String userid, String carid, String number, String type, String brand, String color, double rentprice, double deposit, double total, Date begintime, Date endtime, String img);
 
+    void changerent(String carid);
 }

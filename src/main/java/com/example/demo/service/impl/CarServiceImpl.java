@@ -54,8 +54,10 @@ public class CarServiceImpl implements ICarService {
         return carMapper.selectdepositbyid(carid);
     }
 
+    @Override
     public int addorder(String username, String userid, String carid, String number, String type, String brand, String color, double rentprice, double deposit, double total, Date begintime, Date endtime,String img) {
-        return carMapper.addorder(username,userid,carid,number,type,brand,color,rentprice,deposit,total,begintime,endtime,img);
-    }
+        return carMapper.addorder(username,userid,carid,number,type,brand,color,rentprice,deposit,total,begintime,endtime,img); }
+
+    public void changerent(String carid){carMapper.changerent(carid);}
 
 }

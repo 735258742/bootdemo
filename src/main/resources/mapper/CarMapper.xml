@@ -44,4 +44,9 @@
 		values (#{username},#{userid},#{carid},#{number},#{type},#{brand},#{color},#{rentprice},#{deposit},#{total},#{begintime},#{endtime},#{img})
 	</insert>
 
+	<update id="changerent" parameterType="string">
+		UPDATE cars SET isrenting="1"
+		WHERE carid=#{carid}
+	</update>
+
 </mapper>
