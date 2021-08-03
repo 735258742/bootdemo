@@ -100,22 +100,17 @@
             </td>
             <td th:text="${car.description}"></td>
             <td>
-                <div th:switch="${car.isrenting}">
-                    <a th:href="@{addCarPage}"
-                       th:case="0">增加车辆</a>
-                    <p th:case="1">已租借</p>
+                <div>
+                    <a th:href="@{addCarPage}">增加车辆</a>
                 </div>
-                <div th:switch="${car.isrenting}">
+                <div>
 
-                    <a th:href="@{modifyCar(carid=${car.carid})}"
-                       th:case="0">修改车辆</a>
-                    <p th:case="1">已租借</p>
+                    <a th:href="@{modifyCar(carid=${car.carid})}">修改车辆</a>
+
                 </div>
-                <div th:switch="${car.isrenting}">
+                <div>
 
-                    <a th:href="@{deleteCar(carid=${car.carid})}"
-                       th:case="0">删除车辆</a>
-                    <p th:case="1">已租借</p>
+                    <a th:href="@{deleteCar(carid=${car.carid})}">删除车辆</a>
                 </div>
             </td>
         </tr>

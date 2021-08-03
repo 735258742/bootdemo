@@ -58,7 +58,7 @@ public class UserController {
             String password = request.getParameter("password");
             String password2 = request.getParameter("password2");
             if (!password.equals(password2)) {
-                return "redirect:register";
+                return "error1";
             }
             else {
                 userService.insertUser(user);
