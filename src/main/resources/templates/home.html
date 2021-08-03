@@ -42,6 +42,7 @@
             width: 634px;
             background-color: #bfa;
             float: left;
+            overflow: hidden;
         }
         .show img{height:610px;width: 634px;}
         .news{
@@ -85,8 +86,38 @@
     </ul>
 
     <div class="show">
-        <img src="/images/zuchebg1.jpg" alt="没有找到图片">
+        <img class="img-slide img" src="/images/zuchebg1.jpg" alt="暂无图片">
+        <img class="img-slide img" src="/images/zuchebg2.jpg" alt="暂无图片">
+        <img class="img-slide img" src="/images/zuchebg3.jpg" alt="暂无图片">
+        <img class="img-slide img" src="/images/zuchebg4.jpg" alt="暂无图片">
+        <img class="img-slide img" src="/images/zuchebg5.jpg" alt="暂无图片">
     </div>
+
+
+    <script type="text/javascript">
+        // index：索引， len：长度
+        var index = 0, len;
+        // 类似获取一个元素数组
+        var show = document.getElementsByClassName("img-slide img");
+        len = show.length;
+        show[index].style.display = 'block';
+        // 逻辑控制函数
+        function slideShow() {
+            index ++;
+            // 防止数组溢出
+            if(index >= len) index = 0;
+            // 遍历每一个元素
+            for(var i=0; i<len; i++) {
+                show[i].style.display = 'none';
+            }
+            // 每次只有一张图片显示
+            show[index].style.display = 'block';
+        }
+
+        // 定时器，间隔3s切换图片
+        setInterval(slideShow, 2000);
+    </script>
+
     <div class="news">
         <div class="list">
             <h1 align="center">欢迎来到蓝桥第九组租车系统</h1>
